@@ -1,0 +1,18 @@
+//
+//  BulbView.swift
+//  LightComtrol
+//
+//  Created by Agnethe Gajhede on 15/02/2026.
+//
+
+import SwiftUI
+
+struct BulbView: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
+
+#Preview {
+    BulbView()
+}
