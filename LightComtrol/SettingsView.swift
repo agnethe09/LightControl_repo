@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @StateObject private var bulbStore = BulbStore()
-
+    @EnvironmentObject var auth: AuthManager
 
     var body: some View {
-        
-        
-        
-        Text("Hello, Bitch!")
+        VStack {
+            Button("Log out", role: .destructive) {
+                auth.signOut()
+            }
+        }
+        .padding()
+        .navigationTitle("Settings")
     }
 }
+
 
 #Preview {
     SettingsView()

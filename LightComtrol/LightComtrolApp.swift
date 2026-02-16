@@ -4,24 +4,32 @@
 //
 //  Created by Agnethe Gajhede on 14/02/2026.
 //
-
 import SwiftUI
+import FirebaseCore
 
 @main
 struct LightComtrolApp: App {
-    @State private var isLoggedIn:Bool = false
+    @StateObject private var auth = AuthManager()
     @StateObject private var bulbStore = BulbStore()
-    
+
+    init() {
+        FirebaseApp.configure()
+    }
+
     var body: some Scene {
         WindowGroup {
-            
-            if isLoggedIn {
+            if auth.user != nil {
                 OverviewPage()
+                    .environmentObject(auth)
                     .environmentObject(bulbStore)
-            }
-            else{
-                LoginPage(isLoggedIn: $isLoggedIn)
+                    .onAppear { bulbStore.startListening() }
+            } else {
+                LoginPage()
+                    .environmentObject(auth)
+                    .onAppear { bulbStore.stopListening() }
             }
         }
     }
 }
+
+

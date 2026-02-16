@@ -27,8 +27,11 @@ struct HomeView: View {
 
                         Spacer()
 
-                        Toggle("", isOn: $bulb.isOn)
-                            .labelsHidden()
+                        Toggle("", isOn: Binding(
+                            get: { bulb.isOn },
+                            set: { newValue in bulbStore.setIsOn(bulb, isOn: newValue) }
+                        ))
+                        .labelsHidden()
                     }
                     .padding()
                     .background(.thinMaterial)

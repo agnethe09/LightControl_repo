@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FF9591962F42F3B900B1D1B7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FF9591952F42F3B900B1D1B7 /* FirebaseAuth */; };
+		FF9591982F42F3B900B1D1B7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FF9591972F42F3B900B1D1B7 /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		FF9591602F41180000B1D1B7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF9591962F42F3B900B1D1B7 /* FirebaseAuth in Frameworks */,
+				FF9591982F42F3B900B1D1B7 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +119,8 @@
 			);
 			name = LightComtrol;
 			packageProductDependencies = (
+				FF9591952F42F3B900B1D1B7 /* FirebaseAuth */,
+				FF9591972F42F3B900B1D1B7 /* FirebaseFirestore */,
 			);
 			productName = LightComtrol;
 			productReference = FF9591522F4117FD00B1D1B7 /* LightComtrol.app */;
@@ -195,6 +204,9 @@
 			);
 			mainGroup = FF9591492F4117FD00B1D1B7;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				FF9591942F42F3B900B1D1B7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FF9591532F4117FD00B1D1B7 /* Products */;
 			projectDirPath = "";
@@ -578,6 +590,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FF9591942F42F3B900B1D1B7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FF9591952F42F3B900B1D1B7 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF9591942F42F3B900B1D1B7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		FF9591972F42F3B900B1D1B7 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF9591942F42F3B900B1D1B7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FF95914A2F4117FD00B1D1B7 /* Project object */;
 }

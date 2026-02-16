@@ -8,7 +8,7 @@
 import Foundation
 
 struct Bulb: Identifiable {
-    let id = UUID()
+    var id: String
     var name: String
     var icon: String
     var isOn: Bool = false

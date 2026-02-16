@@ -8,66 +8,56 @@
 import SwiftUI
 
 struct LoginPage: View {
-    @Binding var isLoggedIn: Bool
+    @EnvironmentObject var auth: AuthManager
+
     @State private var email = ""
     @State private var password = ""
-    @State private var showPassword: Bool = false
-    
+
     var body: some View {
-        VStack (spacing: 80)
-        {
-            
-            
-            Text("Hello, Welcome to the \n Light Control App")
-                .font(Font.title)
+        VStack(spacing: 14) {
+
+            Text("Please log in to continue")
+                .frame(maxWidth: .infinity)
                 .multilineTextAlignment(.center)
-                .bold()
-            
-            
-            
-            VStack (spacing : 20){
-                Text("Login")
-                    .font(Font.largeTitle)
-                    
-                
-                
-                TextField ("Email", text: $email)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal)
-                
-                HStack {
-                    if showPassword {
-                        TextField("Password", text: $password)
-                    } else {
-                        SecureField("Password", text: $password)
-                    }
-                    
-                    Button {
-                        showPassword.toggle()
-                    } label: {
-                        Image(systemName: showPassword ? "eye.slash" : "eye")
-                    }
-                }
+
+            TextField("Email", text: $email)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+                .keyboardType(.emailAddress)
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal)
-                
-                Button("Sign in"){
-                    isLoggedIn = true
-                }
-                .buttonStyle(.borderedProminent)
-            }
-            VStack(spacing: 15)
-            {
-                Text("Don't have an account?")
-                    .foregroundColor(.blue)
-                Button("Sign up"){
-                    
-                }
-            }
-        }
-    }
-}
 
-#Preview {
-    LoginPage(isLoggedIn: .constant(false))
+            SecureField("Password", text: $password)
+                .textFieldStyle(.roundedBorder)
+                .padding(.horizontal)
+
+            if let msg = auth.errorMessage {
+                Text(msg)
+                    .foregroundStyle(.red)
+                    .font(.footnote)
+                    .padding(.horizontal)
+            }
+
+            Button("Sign In") {
+                Task {
+                    await auth.signIn(
+                        email: email.trimmingCharacters(in: .whitespacesAndNewlines),
+                        password: password
+                    )
+                }
+            }
+            .buttonStyle(.borderedProminent)
+
+            Button("Create Account") {
+                Task {
+                    await auth.signUp(
+                        email: email.trimmingCharacters(in: .whitespacesAndNewlines),
+                        password: password
+                    )
+                }
+            }
+            .buttonStyle(.bordered)
+        }
+        .padding()
+    }
 }

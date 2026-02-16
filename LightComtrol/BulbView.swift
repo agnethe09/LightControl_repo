@@ -9,16 +9,16 @@ import SwiftUI
 struct BulbView: View {
     @EnvironmentObject var bulbStore: BulbStore
     @State private var showingAddSheet = false
-
+    
     var body: some View {
         List {
             ForEach(bulbStore.bulbs) { bulb in
                 HStack {
                     Image(systemName: bulb.icon)
                     Text(bulb.name)
-
+                    
                     Spacer()
-
+                    
                     Menu {
                         Button(role: .destructive) {
                             bulbStore.delete(bulb)
@@ -39,6 +39,7 @@ struct BulbView: View {
         }
         .sheet(isPresented: $showingAddSheet) {
             AddBulbView()
+                .environmentObject(bulbStore)
         }
     }
 }
