@@ -10,22 +10,33 @@ import SwiftUI
 struct OverviewPage: View {
     var body: some View {
         TabView {
+            NavigationStack {
+                HomeView()
+                    .navigationTitle("Light Control")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem {
+                Label("Home", systemImage: "house")
+            }
             
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
-            BulbView()
-                .tabItem {
-                    Label("Bulbs", systemImage: "lightbulb")
-                }
+            NavigationStack {
+                BulbView()
+                    .navigationTitle("Light Control")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem {
+                Label("Bulbs", systemImage: "lightbulb")
+            }
             
-            SettingsView()
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
-                }
+            NavigationStack {
+                SettingsView()
+                    .navigationTitle("Light Control")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem {
+                Label("Settings", systemImage: "gear")
+            }
         }
-        
     }
 }
 

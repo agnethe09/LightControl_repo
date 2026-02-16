@@ -10,12 +10,14 @@ import SwiftUI
 @main
 struct LightComtrolApp: App {
     @State private var isLoggedIn:Bool = false
+    @StateObject private var bulbStore = BulbStore()
     
     var body: some Scene {
         WindowGroup {
             
             if isLoggedIn {
-                ContentView()
+                OverviewPage()
+                    .environmentObject(bulbStore)
             }
             else{
                 LoginPage(isLoggedIn: $isLoggedIn)

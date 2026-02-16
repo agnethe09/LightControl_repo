@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @StateObject private var bulbStore = BulbStore()
+
+
     var body: some View {
+        
+        
+        
         Text("Hello, Bitch!")
     }
 }

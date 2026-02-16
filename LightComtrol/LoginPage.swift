@@ -14,37 +14,57 @@ struct LoginPage: View {
     @State private var showPassword: Bool = false
     
     var body: some View {
-        VStack (spacing : 20){
-            Text("Login")
-                .font(Font.largeTitle)
+        VStack (spacing: 80)
+        {
+            
+            
+            Text("Hello, Welcome to the \n Light Control App")
+                .font(Font.title)
+                .multilineTextAlignment(.center)
                 .bold()
             
-            TextField ("Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            
+            VStack (spacing : 20){
+                Text("Login")
+                    .font(Font.largeTitle)
+                    
+                
+                
+                TextField ("Email", text: $email)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal)
+                
+                HStack {
+                    if showPassword {
+                        TextField("Password", text: $password)
+                    } else {
+                        SecureField("Password", text: $password)
+                    }
+                    
+                    Button {
+                        showPassword.toggle()
+                    } label: {
+                        Image(systemName: showPassword ? "eye.slash" : "eye")
+                    }
+                }
+                .textFieldStyle(.roundedBorder)
                 .padding(.horizontal)
-            
-            HStack {
-                if showPassword {
-                    TextField("Password", text: $password)
-                } else {
-                    SecureField("Password", text: $password)
+                
+                Button("Sign in"){
+                    isLoggedIn = true
                 }
-
-                Button {
-                    showPassword.toggle()
-                } label: {
-                    Image(systemName: showPassword ? "eye.slash" : "eye")
+                .buttonStyle(.borderedProminent)
+            }
+            VStack(spacing: 15)
+            {
+                Text("Don't have an account?")
+                    .foregroundColor(.blue)
+                Button("Sign up"){
+                    
                 }
             }
-            .textFieldStyle(.roundedBorder)
-            .padding(.horizontal)
-            
-            Button("Sign in"){
-                isLoggedIn = true
-            }
-            .buttonStyle(.borderedProminent)
         }
-        
     }
 }
 
