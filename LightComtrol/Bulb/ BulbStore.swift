@@ -66,6 +66,10 @@ final class BulbStore: ObservableObject {
                 "isOn": false
             ])
     }
+    func renameBulb(_ bulb: Bulb, to newName: String) {
+        guard let index = bulbs.firstIndex(where: { $0.id == bulb.id }) else { return }
+        bulbs[index].name = newName.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 
     func delete(_ bulb: Bulb) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
