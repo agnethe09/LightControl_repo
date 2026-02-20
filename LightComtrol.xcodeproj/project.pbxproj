@@ -34,9 +34,22 @@
 		FF9591692F41180000B1D1B7 /* LightComtrolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LightComtrolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FF4FE9572F4858A2009026B5 /* Exceptions for "LightComtrol" folder in "LightComtrol" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FF9591512F4117FD00B1D1B7 /* LightComtrol */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		FF9591542F4117FD00B1D1B7 /* LightComtrol */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FF4FE9572F4858A2009026B5 /* Exceptions for "LightComtrol" folder in "LightComtrol" target */,
+			);
 			path = LightComtrol;
 			sourceTree = "<group>";
 		};
@@ -412,6 +425,8 @@
 				DEVELOPMENT_TEAM = 3N9Z9677JX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LightComtrol/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Control ESP32 devices on the local network.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -444,6 +459,8 @@
 				DEVELOPMENT_TEAM = 3N9Z9677JX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LightComtrol/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Control ESP32 devices on the local network.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
