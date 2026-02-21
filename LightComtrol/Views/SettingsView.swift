@@ -10,37 +10,51 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var auth: AuthManager
     @StateObject private var esp = ESP32Client()
-
+    
     var body: some View {
-        VStack {
-            Button("Log out", role: .destructive) {
+        VStack (spacing: 20){
+            VStack{
+                Text("ESP32 Relay")
+                    .font(.title2)
+                
+                Text(esp.statusText)
+                    .font(.caption)
+                    .multilineTextAlignment(.center)
+            }
+            .padding()
+            .background(.thinMaterial)
+            .cornerRadius(14)
+            
+            Button("Sign out", role: .destructive) {
                 auth.signOut()
             }
+            .padding()
+            .background(.thinMaterial)
+            .cornerRadius(14)
+            
         }
-        .padding()
         .navigationTitle("Settings")
         
-        VStack(spacing: 16) {
-                    Text("ESP32 Relay")
-                        .font(.title2)
-
-                    Text(esp.statusText)
-                        .font(.caption)
-                        .multilineTextAlignment(.center)
-
-                    HStack(spacing: 12) {
-                        Button("ON") { esp.turnOn() }
-                        Button("OFF") { esp.turnOff() }
-                        Button("STATUS") { esp.refresh() }
-                    }
-                }
-                .padding()
-                .onAppear { esp.refresh() }
-
+        //        VStack(spacing: 16) {
+        //                    Text("ESP32 Relay")
+        //                        .font(.title2)
+        //
+        //                    Text(esp.statusText)
+        //                        .font(.caption)
+        //                        .multilineTextAlignment(.center)
+        //
+        //                    HStack(spacing: 12) {
+        //                        Button("STATUS") { esp.refresh() }
+        //                    }
+        //                }
+        //                .padding()
+        //                .onAppear { esp.refresh() }
+        //
+        //    }
     }
 }
 
 
-//#Preview {
-//    SettingsView()
-//}
+#Preview {
+    SettingsView()
+}

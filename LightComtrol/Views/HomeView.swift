@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var bulbStore: BulbStore
+    @EnvironmentObject var esp: ESP32Client
 
     var body: some View {
         ScrollView {
@@ -29,7 +30,13 @@ struct HomeView: View {
 
                         Toggle("", isOn: Binding(
                             get: { bulb.isOn },
-                            set: { newValue in bulbStore.setIsOn(bulb, isOn: newValue) }
+                            set: { newValue in bulbStore.setIsOn(bulb, isOn: newValue)
+                                if newValue {
+                                    esp.turnOff()
+                                }
+                                else {
+                                    esp.turnOn()
+                                }}
                         ))
                         .labelsHidden()
                     }

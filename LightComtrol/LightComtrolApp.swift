@@ -22,7 +22,8 @@ struct LightComtrolApp: App {
                 OverviewPage()
                     .environmentObject(auth)
                     .environmentObject(bulbStore)
-                    .onAppear { bulbStore.startListening() }
+                    .onAppear { bulbStore.startListening()}
+                    .environmentObject(ESP32Client())
             } else {
                 LoginPage()
                     .environmentObject(auth)
