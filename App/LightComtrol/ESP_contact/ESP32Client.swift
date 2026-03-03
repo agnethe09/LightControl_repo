@@ -21,7 +21,7 @@ final class ESP32Client: ObservableObject {
         req.timeoutInterval = 3
         
         URLSession.shared.dataTask(with: req) { data, response, error in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { 
                 if let error = error {
                     self.statusText = "Error: \(error.localizedDescription)"
                     return
