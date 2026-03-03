@@ -1,13 +1,14 @@
 #include <WiFi.h>
 #include <WebServer.h>
+#include "secrets.h"
 
-const char *ssid = "3.TV";
-const char *pass = "jeger9nja";
+const char *ssid = WIFI_SSID;
+const char *pass = WIFI_PASS;
 
 WebServer server(80);
 
-const int RELAY_PIN = 4;      // your chosen GPIO
-const bool ACTIVE_LOW = true; // typical relay modules are active-low
+const int RELAY_PIN = 4;      
+const bool ACTIVE_LOW = true; 
 
 bool relayOn = false;
 
@@ -64,9 +65,9 @@ void setup()
   Serial.begin(115200);
   delay(200);
 
-  // ---- Safe relay boot state ----
+  
   pinMode(RELAY_PIN, OUTPUT);
-  // force OFF immediately (prevents a brief click on some modules)
+ 
   digitalWrite(RELAY_PIN, ACTIVE_LOW ? HIGH : LOW);
   relayOn = false;
 

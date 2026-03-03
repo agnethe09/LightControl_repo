@@ -11,8 +11,7 @@ import Combine
 final class ESP32Client: ObservableObject {
     @Published var statusText: String = "Unknown"
     
-    // Put your ESP32 IP here
-    var baseURL = "http:/192.168.1.129"
+    var baseURL = "http://192.168.1.129"
     
     func send(path: String) {
         guard let url = URL(string: baseURL + path) else { return }
