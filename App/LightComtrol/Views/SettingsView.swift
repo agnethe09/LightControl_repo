@@ -20,7 +20,11 @@ struct SettingsView: View {
                 Text(esp.statusText)
                     .font(.caption)
                     .multilineTextAlignment(.center)
+                
+                Button("Update status") { esp.refresh() }
+                    .tint(.primary)
             }
+            .onAppear{ esp.refresh()}
             .padding()
             .background(.thinMaterial)
             .cornerRadius(14)
@@ -35,24 +39,11 @@ struct SettingsView: View {
         }
         .navigationTitle("Settings")
         
-        //        VStack(spacing: 16) {
-        //                    Text("ESP32 Relay")
-        //                        .font(.title2)
-        //
-        //                    Text(esp.statusText)
-        //                        .font(.caption)
-        //                        .multilineTextAlignment(.center)
-        //
-        //                    HStack(spacing: 12) {
-        //                        Button("STATUS") { esp.refresh() }
-        //                    }
-        //                }
-        //                .padding()
-        //                .onAppear { esp.refresh() }
-        //
-        //    }
+        
     }
 }
+    
+
 
 
 #Preview {
