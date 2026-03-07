@@ -1,4 +1,4 @@
-@startuml
+@startuml LightControl_TurnOnLampSequence
 title LightControl - Turn On Lamp Sequence
 
 actor User
