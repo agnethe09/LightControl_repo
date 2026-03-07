@@ -1,0 +1,23 @@
+@startuml
+title LightControl - Turn On Lamp Sequence
+
+actor User
+participant "iOS App" as App
+participant "ESP32 HTTP Server" as ESP
+participant "Control Logic" as Logic
+participant "GPIO" as GPIO
+participant "Relay Module" as Relay
+participant "Lamp" as Lamp
+
+User -> App : Tap "ON"
+App -> ESP : HTTP GET /on
+ESP -> Logic : handleRequest("/on")
+Logic -> GPIO : set output HIGH/LOW
+GPIO -> Relay : trigger relay
+Relay -> Lamp : connect power
+Lamp --> User : Lamp turns on
+
+ESP --> App : HTTP 200 OK
+App --> User : Update UI state
+
+@enduml
